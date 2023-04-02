@@ -9,32 +9,16 @@
 <body>
 <div id="app">
     <app-button>Click me</app-button>
-    <app-button></app-button>
 </div>
-<script>
+<script type="module">
+    import AppButton from "./js/components/AppButton.js";
+
     let app = {
         components: {
-            'app-button': {
-                template: `
-                <button
-                class="disabled:cursor-not-allowed"
-                :disabled="processing"
-                @click="processing = !processing"
-
-                ><slot>My default button content</slot></button><br>
-                `,
-            },
+            'app-button': AppButton
         },
-        data() {
-            return {
-                processing: true
-            }
-        }
-    }
-    let AppButton = {}
-    let AssignmentList = {}
-    let AssignmentListItem = {}
 
+    }
     Vue.createApp(app).mount('#app')
 </script>
 
