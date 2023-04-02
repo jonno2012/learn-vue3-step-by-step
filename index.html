@@ -8,51 +8,33 @@
 </head>
 <body>
 <div id="app">
-    <section v-show="inProgressAssignments.length">
-        <h2 class="font-bold mb-2">In progress Assignments</h2>
-        <ul>
-            <li v-for="assignment in inProgressAssignments" :key="assignment.id">
-                <label>
-                    {{ assignment.name}}
-                </label>
-
-                <input type="checkbox" v-model="assignment.complete"></li>
-        </ul>
-    </section>
-
-    <section v-show="completedAssignments.length">
-        <h2 class="font-bold mb-2">Completed Assignments</h2>
-
-        <ul>
-            <li v-for="assignment in completedAssignments" :key="assignment.id">
-                <label>
-                    {{ assignment.name}}
-                </label>
-
-                <input type="checkbox" v-model="assignment.complete"></li>
-        </ul>
-    </section>
+    <app-button>Click me</app-button>
+    <app-button></app-button>
 </div>
 <script>
     let app = {
+        components: {
+            'app-button': {
+                template: `
+                <button
+                class="disabled:cursor-not-allowed"
+                :disabled="processing"
+                @click="processing = !processing"
+
+                ><slot>My default button content</slot></button><br>
+                `,
+            },
+        },
         data() {
             return {
-                assignments: [
-                    {id: 1, name: 'Finish a', complete: true},
-                    {id: 2, name: 'Finish a', complete: false},
-                    {id: 3, name: 'Finish a', complete: false}
-                ]
+                processing: true
             }
-        },
-        computed: {
-            inProgressAssignments() {
-                return this.assignments.filter(a => !a.complete)
-            },
-          completedAssignments() {
-              return this.assignments.filter(a => a.complete)
-          }
         }
     }
+    let AppButton = {}
+    let AssignmentList = {}
+    let AssignmentListItem = {}
+
     Vue.createApp(app).mount('#app')
 </script>
 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div id="app">
+  <section v-show="inProgressAssignments.length">
+    <h2 class="font-bold mb-2">In progress Assignments</h2>
+    <ul>
+      <li v-for="assignment in inProgressAssignments" :key="assignment.id">
+        <label>
+          {{ assignment.name}}
+        </label>
+
+        <input type="checkbox" v-model="assignment.complete"></li>
+    </ul>
+  </section>
+
+  <section v-show="completedAssignments.length">
+    <h2 class="font-bold mb-2">Completed Assignments</h2>
+
+    <ul>
+      <li v-for="assignment in completedAssignments" :key="assignment.id">
+        <label>
+          {{ assignment.name}}
+        </label>
+
+        <input type="checkbox" v-model="assignment.complete"></li>
+    </ul>
+  </section>
+</div>
+<script>
+  let app = {
+    data() {
+      return {
+        assignments: [
+          {id: 1, name: 'Finish a', complete: true},
+          {id: 2, name: 'Finish a', complete: false},
+          {id: 3, name: 'Finish a', complete: false}
+        ]
+      }
+    },
+    computed: {
+      inProgressAssignments() {
+        return this.assignments.filter(a => !a.complete)
+      },
+      completedAssignments() {
+        return this.assignments.filter(a => a.complete)
+      }
+    }
+  }
+  Vue.createApp(app).mount('#app')
+</script>
+
+<style>
+
+</style>
+</body>
+</html>
