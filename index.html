@@ -6,27 +6,39 @@
     <script src="https://unpkg.com/vue@3"></script>
 </head>
 <body>
-
 <div id="app">
-    <input type="text" v-model="greeting">
-    <p>
-        {{ greeting }} ({{ greeting.length}})
-    </p>
-
+    <button
+            @click="toggle"
+            :class="active ? 'text-green' : 'text-red'"
+    >Click me!</button>
 </div>
 <script>
     Vue.createApp({
         data() {
             return {
-                greeting: 'Hello World 123'
+                active: false
             }
         },
-        mounted() {
-            setTimeout(() => {
-                this.greeting = 'changed'
-            }, 3000)
+        methods: {
+            toggle() {
+                this.active = !this.active
+            }
         }
     }).mount('#app')
 </script>
+
+<style>
+    body {
+        display: grid;
+        place-items: center;
+    }
+
+    .text-green {
+        color: green;
+    }
+    .text-red {
+        color: red;
+    }
+</style>
 </body>
 </html>
