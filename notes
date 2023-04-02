@@ -1,1 +1,5 @@
 To get simple node server working: npx serve
+
+
+
+- Always add a key to a v-for loop.

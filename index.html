@@ -4,41 +4,60 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 <div id="app">
-    <button
-            @click="toggle"
-            :class="active ? 'text-green' : 'text-red'"
-    >Click me!</button>
+    <section v-show="inProgressAssignments.length">
+        <h2 class="font-bold mb-2">In progress Assignments</h2>
+        <ul>
+            <li v-for="assignment in inProgressAssignments" :key="assignment.id">
+                <label>
+                    {{ assignment.name}}
+                </label>
+
+                <input type="checkbox" v-model="assignment.complete"></li>
+        </ul>
+    </section>
+
+    <section v-show="completedAssignments.length">
+        <h2 class="font-bold mb-2">Completed Assignments</h2>
+
+        <ul>
+            <li v-for="assignment in completedAssignments" :key="assignment.id">
+                <label>
+                    {{ assignment.name}}
+                </label>
+
+                <input type="checkbox" v-model="assignment.complete"></li>
+        </ul>
+    </section>
 </div>
 <script>
-    Vue.createApp({
+    let app = {
         data() {
             return {
-                active: false
+                assignments: [
+                    {id: 1, name: 'Finish a', complete: true},
+                    {id: 2, name: 'Finish a', complete: false},
+                    {id: 3, name: 'Finish a', complete: false}
+                ]
             }
         },
-        methods: {
-            toggle() {
-                this.active = !this.active
-            }
+        computed: {
+            inProgressAssignments() {
+                return this.assignments.filter(a => !a.complete)
+            },
+          completedAssignments() {
+              return this.assignments.filter(a => a.complete)
+          }
         }
-    }).mount('#app')
+    }
+    Vue.createApp(app).mount('#app')
 </script>
 
 <style>
-    body {
-        display: grid;
-        place-items: center;
-    }
 
-    .text-green {
-        color: green;
-    }
-    .text-red {
-        color: red;
-    }
 </style>
 </body>
 </html>
