@@ -6,3 +6,6 @@ To get simple node server working: npx serve
 
 - try to keep the amount of data/computed etc objects to a minumum and try to keep data closely related. if component is getting
 too big and nebulous, it may be time to create a new component.
+
+- We can use v-model with a prop in a child component by v-model:currentTag="currentTag" and emit from the child using
+@click="$emit('update:currentTag', tag)"
