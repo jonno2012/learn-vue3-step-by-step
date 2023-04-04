@@ -14,7 +14,7 @@
     },
     {
       "name":  "Finish Project 3",
-      "complete": false,
+      "complete": true,
       "id": 1,
       "tag": "science"
     },

@@ -22,3 +22,8 @@ Life-cycle hooks
 - mounted - created and then rendered to the dom. (component)
 - created - created but not rendered. (component)
 - unmounted - is frequently used when SPAs to remove event listeners to free up memory and other things
+
+* slots are a good way of inserting non-string content (SVGs for example), into a component
+
+* id atts set on a template tag will be passed and assigned to the root element in the component.
+* # is an alias for v-slot
