@@ -9,3 +9,16 @@ too big and nebulous, it may be time to create a new component.
 
 - We can use v-model with a prop in a child component by v-model:currentTag="currentTag" and emit from the child using
 @click="$emit('update:currentTag', tag)"
+
+Fake API with json-server
+-------------------------
+- nom install json-server --save-dev
+- npx json-server db.json -p 3001
+* You can now call http://localhost:3001/assignments etc and see the json.
+
+
+Life-cycle hooks
+----------------
+- mounted - created and then rendered to the dom. (component)
+- created - created but not rendered. (component)
+- unmounted - is frequently used when SPAs to remove event listeners to free up memory and other things

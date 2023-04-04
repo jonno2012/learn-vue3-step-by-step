@@ -1,0 +1,28 @@
+{
+  "assignments": [
+    {
+      "name":  "Finish Project",
+      "complete": false,
+      "id": 1,
+      "tag": "french"
+    },
+    {
+      "name":  "Finish Project 2",
+      "complete": false,
+      "id": 1,
+      "tag": "math"
+    },
+    {
+      "name":  "Finish Project 3",
+      "complete": false,
+      "id": 1,
+      "tag": "science"
+    },
+    {
+      "name":  "Finish Project 4",
+      "complete": false,
+      "id": 1,
+      "tag": "math"
+    }
+  ]
+}
